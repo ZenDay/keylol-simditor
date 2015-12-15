@@ -19,6 +19,7 @@ class Simditor extends SimpleModule
     params: {}
     upload: false
     indentWidth: 40
+    scrollableContainer: window
 
   _init: ->
     @textarea = $(@opts.textarea)
@@ -204,5 +205,5 @@ class Simditor extends SimpleModule
 
     @el.remove()
     $(document).off '.simditor-' + @id
-    $(window).off '.simditor-' + @id
+    $(@opts.scrollableContainer).off '.simditor-' + @id
     @off()

@@ -25,3 +25,4 @@ package
 .ackrc
 Gemfile.lock
 tmp/
+.idea

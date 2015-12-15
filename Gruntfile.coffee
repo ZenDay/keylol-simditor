@@ -120,11 +120,11 @@ module.exports = (grunt) ->
           src: 'lib/simditor.js',
           dest: 'site/assets/scripts/simditor.js'
         }]
-      push:
+      keylol:
         files: [{
           src: 'styles/simditor.css',
           dest: '../keylol-frontend/app/bower_components/simditor/styles/simditor.css'
-        },{
+        }, {
           src: 'lib/simditor.js',
           dest: '../keylol-frontend/app/bower_components/simditor/lib/simditor.js'
         }]
@@ -206,7 +206,7 @@ module.exports = (grunt) ->
       simditor:
         options:
           banner: '''/*!
- * Simditor for keylol only
+ * Simditor (Keylol Special Edition)
  * http://simditor.tower.im/
  * <%= grunt.template.today("yyyy-mm-dd") %>
  */'''
@@ -268,7 +268,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-curl'
 
   grunt.registerTask 'default', ['site', 'express', 'watch']
-  grunt.registerTask 'compile-test', ['sass', 'coffee', 'umd', 'copy:push', 'usebanner']
+  grunt.registerTask 'keylol', ['sass:simditor', 'coffee:simditor', 'umd', 'usebanner', 'copy:keylol']
   grunt.registerTask 'site', ['sass', 'coffee', 'umd', 'copy:vendor', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
   grunt.registerTask 'test', ['coffee:moduleSpec', 'coffee:buttonSpec', 'jasmine']
   grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simditor', 'compress']

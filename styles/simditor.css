@@ -1,7 +1,7 @@
 /*!
-* Simditor for keylol only
+* Simditor (Keylol Special Edition)
 * http://simditor.tower.im/
-* 2015-12-11
+* 2015-12-15
 */
 @font-face {
   font-family: 'Simditor';
@@ -200,8 +200,8 @@
   left: 0;
 }
 .simditor .simditor-body {
-  padding: 17px 19px;
-  min-height: 250px;
+  padding: 22px 15px 40px;
+  min-height: 300px;
   outline: none;
   cursor: text;
   position: relative;
