@@ -13,30 +13,20 @@ class Formatter extends SimpleModule
 
     @_allowedTags = $.merge(
       ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike',
-      'u', 'font', 'p', 'ul', 'ol', 'li', 'blockquote', 'pre', 'code', 'h1',
-      'h2', 'h3', 'h4', 'hr'],
+      'u', 'p', 'blockquote', 'pre', 'code', 'h1', 'hr', 'comment'],
       @opts.allowedTags
     )
 
     @_allowedAttributes = $.extend
       img: ['src', 'alt', 'width', 'height', 'data-non-image']
       a: ['href', 'target']
-      font: ['color']
       code: ['class']
     , @opts.allowedAttributes
 
     @_allowedStyles = $.extend
-      span: ['color', 'font-size']
-      b: ['color']
-      i: ['color']
-      strong: ['color']
-      strike: ['color']
-      u: ['color']
-      p: ['margin-left', 'text-align']
-      h1: ['margin-left', 'text-align']
-      h2: ['margin-left', 'text-align']
-      h3: ['margin-left', 'text-align']
-      h4: ['margin-left', 'text-align']
+      p: ['text-align']
+      h1: ['text-align']
+      comment: ['text-align']
     , @opts.allowedStyles
 
     @editor.body.on 'click', 'a', (e) ->
@@ -224,7 +214,7 @@ class Formatter extends SimpleModule
         result += @clearHtml(children) if children and children.length > 0
         if lineBreak and i < contents.length - 1 and $node.is 'br, p, div, li,\
           tr, pre, address, artticle, aside, dl, figcaption, footer, h1, h2,\
-          h3, h4, header'
+          h3, h4, header, comment'
           result += '\n'
 
     result

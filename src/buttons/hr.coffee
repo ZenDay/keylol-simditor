@@ -7,7 +7,9 @@ class HrButton extends Button
 
   htmlTag: 'hr'
 
-  _status: ->
+  disableTag: 'pre, table, blockquote'
+
+  _activeStatus: ->
 
   command: ->
     $rootBlock = @editor.selection.rootNodes().first()

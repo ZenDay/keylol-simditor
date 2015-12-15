@@ -7,7 +7,7 @@ class ItalicButton extends Button
 
   htmlTag: 'i'
 
-  disableTag: 'pre'
+  disableTag: 'pre, comment'
 
   shortcut: 'cmd+i'
 

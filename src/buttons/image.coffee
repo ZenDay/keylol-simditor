@@ -7,7 +7,7 @@ class ImageButton extends Button
 
   htmlTag: 'img'
 
-  disableTag: 'pre, table'
+  disableTag: 'pre'
 
   defaultImage: ''
 

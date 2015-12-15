@@ -7,7 +7,7 @@ class BoldButton extends Button
 
   htmlTag: 'b, strong'
 
-  disableTag: 'pre'
+  disableTag: 'pre, h1'
 
   shortcut: 'cmd+b'
 
