@@ -178,7 +178,7 @@ class ImageButton extends Button
       # in case mime type of response isnt correct
       if typeof result != 'object'
         try
-          result = $.parseJSON result
+          result = @parseUpyunResponse result
         catch e
           result =
             success: false
@@ -213,7 +213,7 @@ class ImageButton extends Button
 
       if xhr.responseText
         try
-          result = $.parseJSON xhr.responseText
+          result = @parseUpyunResponse xhr.responseText
           msg = result.msg
         catch e
           msg = @_t('uploadError')
@@ -240,6 +240,11 @@ class ImageButton extends Button
       if @editor.body.find('img.uploading').length < 1
         @editor.uploader.trigger 'uploadready', [file, result]
 
+  parseUpyunResponse: (responseText) ->
+    result = $.parseJSON responseText
+    success: result.code is 200
+    msg: result.message
+    file_path: "//keylol.b0.upaiyun.com/#{result.url}!article.image"
 
   _status: ->
     @_disableStatus()
