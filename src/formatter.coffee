@@ -13,14 +13,13 @@ class Formatter extends SimpleModule
 
     @_allowedTags = $.merge(
       ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike',
-      'u', 'p', 'blockquote', 'pre', 'code', 'h1', 'hr', 'comment'],
+      'u', 'p', 'blockquote', 'h1', 'hr', 'comment'],
       @opts.allowedTags
     )
 
     @_allowedAttributes = $.extend
       img: ['src', 'alt', 'width', 'height', 'data-non-image']
-      a: ['href', 'target']
-      code: ['class']
+      a: ['href']
     , @opts.allowedAttributes
 
     @_allowedStyles = $.extend

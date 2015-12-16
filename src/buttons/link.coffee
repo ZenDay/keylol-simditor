@@ -33,8 +33,7 @@ class LinkButton extends Button
       $contents = $(range.extractContents())
       linkText = @editor.formatter.clearHtml($contents.contents(), false)
       $link = $('<a/>', {
-        href: 'http://www.example.com',
-        target: '_blank',
+        href: 'http://',
         text: linkText || @_t('linkText')
       })
 
@@ -75,13 +74,6 @@ class LinkPopover extends Popover
         <label>#{ @_t 'linkUrl' }</label>
         <input class="link-url" type="text"/>
       </div>
-      <div class="settings-field">
-        <label>#{ @_t 'linkTarget'}</label>
-        <select class="link-target">
-          <option value="_blank">#{ @_t 'openLinkInNewWindow' } (_blank)</option>
-          <option value="_self">#{ @_t 'openLinkInCurrentWindow' } (_self)</option>
-        </select>
-      </div>
     </div>
     """
     @el.addClass('link-popover')
@@ -89,7 +81,6 @@ class LinkPopover extends Popover
     @textEl = @el.find '.link-text'
     @urlEl = @el.find '.link-url'
     @unlinkEl = @el.find '.btn-unlink'
-    @selectTarget = @el.find '.link-target'
 
     @textEl.on 'keyup', (e) =>
       return if e.which == 13
@@ -121,10 +112,6 @@ class LinkPopover extends Popover
 
       range = document.createRange()
       @editor.selection.setRangeAfter txtNode, range
-      @editor.inputManager.throttledValueChanged()
-
-    @selectTarget.on 'change', (e) =>
-      @target.attr 'target', @selectTarget.val()
       @editor.inputManager.throttledValueChanged()
 
   show: (args...) ->
