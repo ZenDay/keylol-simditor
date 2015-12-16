@@ -37,7 +37,7 @@ class ParagraphButton extends Button
 
     $rootNodes.each (i, node) =>
       $node = $ node
-      return if $node.is('blockquote') or $node.is(param) or
+      return if $node.is('spoiler') or $node.is('blockquote') or $node.is(param) or
         $node.is(@disableTag) or @editor.util.isDecoratedNode($node)
 
       $('<' + param + '/>').append($node.contents())
