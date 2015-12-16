@@ -178,7 +178,7 @@ class ImageButton extends Button
       # in case mime type of response isnt correct
       if typeof result != 'object'
         try
-          result = $.parseJSON result
+          result = @parseUpyunResponse result
         catch e
           result =
             success: false
@@ -213,7 +213,7 @@ class ImageButton extends Button
 
       if xhr.responseText
         try
-          result = $.parseJSON xhr.responseText
+          result = @parseUpyunResponse xhr.responseText
           msg = result.msg
         catch e
           msg = @_t('uploadError')
@@ -240,6 +240,11 @@ class ImageButton extends Button
       if @editor.body.find('img.uploading').length < 1
         @editor.uploader.trigger 'uploadready', [file, result]
 
+  parseUpyunResponse: (responseText) ->
+    result = $.parseJSON responseText
+    success: result.code is 200
+    msg: result.message
+    file_path: "//keylol.b0.upaiyun.com/#{result.url}!article.image"
 
   _status: ->
     @_disableStatus()
@@ -274,15 +279,17 @@ class ImageButton extends Button
     img.onload = =>
       return if !$img.hasClass('loading') and !$img.hasClass('uploading')
 
-      width = img.width
-      height = img.height
+      if src is @defaultImage
+        [width, height] = [64, 64]
+      else
+        width = img.width
+        height = img.height
 
       $img.attr
-        src: src,
-        width: width,
-        height: height,
-        'data-image-size': width + ',' + height
-      .removeClass('loading')
+        src: src
+      .removeClass 'loading'
+      .data 'image-size', width + ',' + height
+      @setImgSize $img, width, height
 
       if $img.hasClass('uploading') # img being uploaded
         @editor.util.reflow @editor.body
@@ -301,7 +308,7 @@ class ImageButton extends Button
 
     img.src = src
 
-  createImage: (name = 'Image') ->
+  createImage: (name = '外部图片') ->
     @editor.focus() unless @editor.inputManager.focused
     range = @editor.selection.range()
     range.deleteContents()
@@ -327,6 +334,36 @@ class ImageButton extends Button
     # @editor.selection.setRangeAtStartOf $nextBlock
 
     $img
+
+  resizeImg: ($img, attr, value) ->
+    [origWidth, origHeight] = $img.data('image-size').split(",")
+    if attr is 'width'
+      width = value
+      height = Math.floor origHeight * width / origWidth
+    else
+      height = value
+      width = Math.floor origWidth * height / origHeight
+
+    $img.attr
+      width: width
+      height: height
+
+    if width isnt $img.width()
+      [width, height] = @resizeImg $img, 'width', $img.width()
+    if height isnt $img.height()
+      [width, height] = @resizeImg $img, 'height', $img.height()
+    [width, height]
+
+  setImgSize: ($img, width, height) ->
+    $img.attr
+      width: width
+      height: height
+
+    if width isnt $img.width()
+      [width, height] = @resizeImg $img, 'width', $img.width()
+    if height isnt $img.height()
+      [width, height] = @resizeImg $img, 'height', $img.height()
+    [width, height]
 
   command: (src) ->
     $img = @createImage()
@@ -469,28 +506,20 @@ class ImagePopover extends Popover
     value = inputEl.val() * 1
     return unless @target and ($.isNumeric(value) or value < 0)
 
-    if inputEl.is @widthEl
-      width = value
-      height = @height * value / @width
-      @heightEl.val height
-    else
-      height = value
-      width = @width * value / @height
-      @widthEl.val width
-
     unless onlySetVal
-      @target.attr
-        width: width
-        height: height
+      if inputEl.is @widthEl
+        [width, height] = @button.resizeImg @target, 'width', value
+      else
+        [width, height] = @button.resizeImg @target, 'height', value
+      @widthEl.val width
+      @heightEl.val height
       @editor.trigger 'valuechanged'
 
   _restoreImg: ->
-    size = @target.data('image-size')?.split(",") || [@width, @height]
-    @target.attr
-      width: size[0] * 1
-      height: size[1] * 1
-    @widthEl.val(size[0])
-    @heightEl.val(size[1])
+    [width, height] = @target.data('image-size')?.split(",") || [@width, @height]
+    [width, height] = ImageButton::setImgSize @target, width, height
+    @widthEl.val(width)
+    @heightEl.val(height)
 
     @editor.trigger 'valuechanged'
 
@@ -513,7 +542,7 @@ class ImagePopover extends Popover
 
       if /^data:image/.test(src)
         blob = @editor.util.dataURLtoBlob src
-        blob.name = "Base64 Image.png"
+        blob.name = "base64-image.png"
         @editor.uploader.upload blob,
           inline: true
           img: @target

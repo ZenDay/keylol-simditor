@@ -357,7 +357,7 @@
   cursor: pointer;
 }
 .simditor .simditor-body img.selected {
-  box-shadow: 0 0 0 4px #cccccc;
+  box-shadow: 0 0 0 4px #c7cdd1;
 }
 .simditor .simditor-paste-bin {
   position: fixed;
@@ -443,7 +443,7 @@
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-paragraph.active-comment span:before {
   content: '注释';
   font-style: italic;
-  color: #738a95;
+  color: #c7cdd1;
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title span:before {
   content: "H";
@@ -519,7 +519,7 @@
   line-height: 2em;
   padding: 0 10px;
   text-decoration: none;
-  color: #666666;
+  color: #333;
 }
 .simditor .simditor-toolbar .toolbar-menu ul > li .menu-item:hover {
   background: #f6f6f6;
@@ -541,12 +541,12 @@
 }
 .simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-comment {
   font-size: 15px;
-  color: #738a95;
+  color: #c7cdd1;
   font-style: italic;
 }
 .simditor .simditor-toolbar .toolbar-menu ul > li .separator {
   display: block;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #c7cdd1;
   height: 0;
   line-height: 0;
   font-size: 0;
@@ -760,7 +760,7 @@
   color: #333;
 }
 .simditor .simditor-body comment, .editor-style comment {
-  color: #738a95;
+  color: #c7cdd1;
   font-style: italic;
   word-wrap: break-word;
   margin: 0 0 16px;
@@ -854,7 +854,7 @@
   display: block;
   height: 0;
   border: 0;
-  border-top: 1px solid #738a95;
+  border-top: 1px solid #c7cdd1;
   margin: 16px 0;
   padding: 0;
 }
@@ -866,19 +866,22 @@
   margin: 16px 0;
 }
 .simditor .simditor-body table thead, .editor-style table thead {
-  background-color: #f9f9f9;
+  background-color: #EEF1F3;
 }
 .simditor .simditor-body table td, .simditor .simditor-body table th, .editor-style table td, .editor-style table th {
   min-width: 40px;
   height: 30px;
-  border: 1px solid #ccc;
+  border: 1px solid #c7cdd1;
   vertical-align: top;
   padding: 2px 4px;
   text-align: left;
   box-sizing: border-box;
 }
-.simditor .simditor-body table td.active, .simditor .simditor-body table th.active, .editor-style table td.active, .editor-style table th.active {
-  background-color: #ffffee;
+.simditor .simditor-body table td.active, .editor-style table td.active {
+  background-color: rgba(243, 217, 42, 0.1);
+}
+.simditor .simditor-body table th.active, .editor-style table th.active {
+  background: #F3F5F7;
 }
 .simditor .simditor-body img, .editor-style img {
   vertical-align: middle;

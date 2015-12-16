@@ -111,7 +111,7 @@ $simditor-button-width: 46px;
       cursor: pointer;
 
       &.selected {
-        box-shadow: 0 0 0 4px #cccccc;
+        box-shadow: 0 0 0 4px #c7cdd1;
       }
     }
   }
@@ -212,7 +212,7 @@ $simditor-button-width: 46px;
             &.active-comment span:before {
               content: '注释';
               font-style: italic;
-              color: #738a95;
+              color: #c7cdd1;
             }
           }
 
@@ -309,7 +309,7 @@ $simditor-button-width: 46px;
             line-height: 2em;
             padding: 0 10px;
             text-decoration: none;
-            color: #666666;
+            color: #333;
 
             &:hover {
               background: #f6f6f6;
@@ -335,14 +335,14 @@ $simditor-button-width: 46px;
 
             &.menu-item-comment {
               font-size: 15px;
-              color: #738a95;
+              color: #c7cdd1;
               font-style: italic;
             }
           }
 
           .separator {
             display: block;
-            border-top: 1px solid #cccccc;
+            border-top: 1px solid #c7cdd1;
             height: 0;
             line-height: 0;
             font-size: 0;
@@ -591,7 +591,7 @@ $simditor-button-width: 46px;
   }
 
   comment {
-    color: #738a95;
+    color: #c7cdd1;
     font-style: italic;
     word-wrap: break-word;
     margin: 0 0 16px;
@@ -704,7 +704,7 @@ $simditor-button-width: 46px;
     display: block;
     height: 0;
     border: 0;
-    border-top: 1px solid #738a95;
+    border-top: 1px solid #c7cdd1;
     margin: 16px 0;
     padding: 0;
   }
@@ -717,21 +717,25 @@ $simditor-button-width: 46px;
     margin: 16px 0;
 
     thead {
-      background-color: #f9f9f9;
+      background-color: #EEF1F3;
     }
 
     td, th {
       min-width: 40px;
       height: 30px;
-      border: 1px solid #ccc;
+      border: 1px solid #c7cdd1;
       vertical-align: top;
       padding: 2px 4px;
       text-align: left;
       box-sizing: border-box;
+    }
 
-      &.active {
-        background-color: #ffffee;
-      }
+    td.active {
+      background-color: rgba(243, 217, 42, 0.1);
+    }
+
+    th.active {
+      background: #F3F5F7;
     }
   }
 
