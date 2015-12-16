@@ -244,7 +244,7 @@ module.exports = (grunt) ->
 
     curl:
       fonticons:
-        src: "https://use.fonticons.com/kits/c97bf397/c97bf397.css"
+        src: "https://fonticons-free-fonticons.netdna-ssl.com/kits/c97bf397/c97bf397.css"
         dest: "styles/fonticon.scss"
 
 
@@ -264,6 +264,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'default', ['site', 'express', 'watch']
   grunt.registerTask 'keylol', ['sass:simditor', 'coffee:simditor', 'umd', 'usebanner', 'copy:keylol']
+  grunt.registerTask 'keylol-prod', ['sass:simditor', 'coffee:simditor', 'umd', 'usebanner']
   grunt.registerTask 'site', ['sass', 'coffee', 'umd', 'copy:vendor', 'copy:scripts', 'copy:styles', 'usebanner', 'jekyll']
   grunt.registerTask 'test', ['coffee:moduleSpec', 'coffee:buttonSpec', 'jasmine']
   grunt.registerTask 'package', ['clean:package', 'copy:package', 'uglify:simditor', 'compress']
