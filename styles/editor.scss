@@ -656,10 +656,30 @@ $simditor-button-width: 46px;
 
   spoiler {
     display: block;
-    background: red;
-    border-left: 5px solid #11254a;
-    padding: 10px 13px;
+    padding: 0 13px;
     margin: 0 0 16px;
+
+    &:before {
+      content: " ";
+      display: block;
+      height: 10px;
+      border: 2px solid #e30613;
+      margin: 0 -13px;
+      border-bottom: none;
+      border-top-width: 6px;
+      box-sizing: border-box;
+    }
+
+    &:after {
+      content: " ";
+      display: block;
+      height: 10px;
+      border: 2px solid #e30613;
+      margin: 0 -13px;
+      border-top: none;
+      border-bottom-width: 6px;
+      box-sizing: border-box;
+    }
 
     & > :first-child {
       margin-top: 0 !important;
