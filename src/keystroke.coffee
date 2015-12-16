@@ -189,6 +189,18 @@ class Keystroke extends SimpleModule
       true
 
 
+    # press enter in the last paragraph of spoiler,
+    # just leave the block quote
+    @add 'enter', 'spoiler', (e, $node) =>
+      $closestBlock = @editor.selection.blockNodes().last()
+      return unless $closestBlock.is('p') and !$closestBlock.next().length and
+        @editor.util.isEmptyNode($closestBlock)
+      $node.after $closestBlock
+      range = document.createRange()
+      @editor.selection.setRangeAtStartOf $closestBlock, range
+      true
+
+
     # press delete in a empty li which has a nested list
     @add 'backspace', 'li', (e, $node) =>
       $childList = $node.children('ul, ol')
@@ -245,6 +257,15 @@ class Keystroke extends SimpleModule
 
     # press delete at start of blockquote
     @add 'backspace', 'blockquote', (e, $node) =>
+      return unless @editor.selection.rangeAtStartOf $node
+      $firstChild = $node.children().first().unwrap()
+      range = document.createRange()
+      @editor.selection.setRangeAtStartOf $firstChild, range
+      true
+
+
+    # press delete at start of spoiler
+    @add 'backspace', 'spoiler', (e, $node) =>
       return unless @editor.selection.rangeAtStartOf $node
       $firstChild = $node.children().first().unwrap()
       range = document.createRange()

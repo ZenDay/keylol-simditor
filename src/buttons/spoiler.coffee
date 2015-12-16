@@ -1,18 +1,18 @@
 
-class BlockquoteButton extends Button
+class SpoilerButton extends Button
 
-  name: 'blockquote'
+  name: 'spoiler'
 
-  icon: 'quote-left'
+  icon: 'eye-slash'
 
-  htmlTag: 'blockquote'
+  htmlTag: 'spoiler'
 
-  disableTag: 'pre, table, spoiler'
+  disableTag: 'pre, table, blockquote'
 
   command: ->
     $rootNodes = @editor.selection.rootNodes()
     $rootNodes = $rootNodes.filter (i, node) ->
-      !$(node).parent().is('blockquote')
+      !$(node).parent().is('spoiler')
     @editor.selection.save()
 
     nodeCache = []
@@ -40,4 +40,4 @@ class BlockquoteButton extends Button
     @editor.selection.restore()
     @editor.trigger 'valuechanged'
 
-Simditor.Toolbar.addButton BlockquoteButton
+Simditor.Toolbar.addButton SpoilerButton

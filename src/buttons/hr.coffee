@@ -7,7 +7,7 @@ class HrButton extends Button
 
   htmlTag: 'hr'
 
-  disableTag: 'pre, table, blockquote'
+  disableTag: 'pre, table, blockquote, spoiler'
 
   _activeStatus: ->
 

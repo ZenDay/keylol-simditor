@@ -36,6 +36,7 @@ module.exports = (grunt) ->
             'src/buttons/table.coffee'
             'src/buttons/strikethrough.coffee'
             'src/buttons/alignment.coffee'
+            'src/buttons/spoiler.coffee'
           ]
       site:
         expand: true
@@ -244,7 +245,7 @@ module.exports = (grunt) ->
 
     curl:
       fonticons:
-        src: "http://use.fonticons.com/kits/d7611efe/d7611efe.css"
+        src: "https://use.fonticons.com/kits/c97bf397/c97bf397.css"
         dest: "styles/fonticon.scss"
 
 

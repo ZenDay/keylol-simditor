@@ -95,7 +95,7 @@ class Util extends SimpleModule
     $(node).is('[class^="simditor-"]')
 
   blockNodes: ["div","p","ul","ol","li","blockquote","hr","pre","h1","h2","h3",
-    "h4", "h5", "table", "comment"]
+    "h4", "h5", "table", "comment", "spoiler"]
 
   isBlockNode: (node) ->
     node = $(node)[0]

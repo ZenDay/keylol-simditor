@@ -652,6 +652,22 @@ $simditor-button-width: 46px;
     }
   }
 
+  spoiler {
+    display: block;
+    background: red;
+    border-left: 5px solid #11254a;
+    padding: 10px 13px;
+    margin: 0 0 16px;
+
+    & > :first-child {
+      margin-top: 0 !important;
+    }
+
+    & > :last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
   code {
     display: inline-block;
     padding: 0 4px;

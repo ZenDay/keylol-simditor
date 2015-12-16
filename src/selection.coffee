@@ -144,7 +144,7 @@ class Selection extends SimpleModule
     @_rootNodes ||= do =>
       @nodes().filter (i, node) =>
         $parent = $(node).parent()
-        $parent.is(@editor.body) or $parent.is('blockquote')
+        $parent.is(@editor.body) or $parent.is('blockquote') or $parent.is('spoiler')
 
     @_rootNodes
 

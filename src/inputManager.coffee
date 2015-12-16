@@ -51,7 +51,7 @@ class InputManager extends SimpleModule
       # make sure each code block and table has siblings
       @editor.body.find('hr, pre, .simditor-table').each (i, el) =>
         $el = $(el)
-        if ($el.parent().is('blockquote') or $el.parent()[0] == @editor.body[0])
+        if ($el.parent().is('spoiler') or $el.parent().is('blockquote') or $el.parent()[0] == @editor.body[0])
           formatted = false
 
           if $el.next().length == 0

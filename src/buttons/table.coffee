@@ -7,7 +7,7 @@ class TableButton extends Button
 
   htmlTag: 'table'
 
-  disableTag: 'pre, li, blockquote'
+  disableTag: 'pre, li, blockquote, spoiler'
 
   menu: true
 

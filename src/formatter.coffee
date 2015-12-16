@@ -13,7 +13,7 @@ class Formatter extends SimpleModule
 
     @_allowedTags = $.merge(
       ['br', 'span', 'a', 'img', 'b', 'strong', 'i', 'strike',
-      'u', 'p', 'blockquote', 'pre', 'code', 'h1', 'hr', 'comment'],
+      'u', 'p', 'blockquote', 'pre', 'code', 'h1', 'hr', 'comment', 'spoiler'],
       @opts.allowedTags
     )
 
