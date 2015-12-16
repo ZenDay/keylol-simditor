@@ -54,7 +54,7 @@ class Clipboard extends SimpleModule
         return unless imageFile? and @opts.pasteImage
 
         unless imageFile.name
-          imageFile.name = "Clipboard Image.png"
+          imageFile.name = "来自剪切板"
 
         return if @editor.triggerHandler('pasting', [imageFile]) == false
 

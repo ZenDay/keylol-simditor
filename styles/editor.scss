@@ -467,7 +467,7 @@ $simditor-button-width: 46px;
 
   .simditor-popover {
     display: none;
-    padding: 5px 8px 0;
+    padding: 5px 8px;
     background: #ffffff;
     box-shadow: 0 1px 4px rgba(0,0,0,0.4);
     border-radius: 2px;
@@ -475,14 +475,14 @@ $simditor-button-width: 46px;
     z-index: 2;
 
     .settings-field {
-      margin: 0 0 5px 0;
+      margin: 5px 0;
       font-size: 12px;
-      height: 25px;
-      line-height: 25px;
+      height: 24px;
+      line-height: 24px;
 
       label {
         display: inline-block;
-        margin: 0 5px 0 0;
+        margin: 0 3px 0 0;
       }
 
       input[type=text] {
@@ -490,6 +490,8 @@ $simditor-button-width: 46px;
         width: 200px;
         box-sizing: border-box;
         font-size: 12px;
+        margin: 0;
+        padding: 4px 6px;
 
         &.image-size {
           width: 83px;
