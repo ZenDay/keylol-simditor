@@ -16,25 +16,21 @@ class UndoManager extends SimpleModule
     @_stack = []
 
     if @editor.util.os.mac
-      undoShortcut = 'cmd+z'
-      redoShortcut = 'shift+cmd+z'
-    else if @editor.util.os.win
-      undoShortcut = 'ctrl+z'
-      redoShortcut = 'ctrl+y'
+      modifierKey = 'cmd'
     else
-      undoShortcut = 'ctrl+z'
-      redoShortcut = 'shift+ctrl+z'
+      modifierKey = 'ctrl'
 
 
-    @editor.hotkeys.add undoShortcut, (e) =>
+    @editor.hotkeys.add "#{modifierKey}+z", (e) =>
       e.preventDefault()
       @undo()
       false
 
-    @editor.hotkeys.add redoShortcut, (e) =>
-      e.preventDefault()
-      @redo()
-      false
+    for key in ["#{modifierKey}+y", "#{modifierKey}+shift+z"]
+      @editor.hotkeys.add key, (e) =>
+        e.preventDefault()
+        @redo()
+        false
 
     @throttledPushState = @editor.util.throttle =>
       @_pushUndoState()
