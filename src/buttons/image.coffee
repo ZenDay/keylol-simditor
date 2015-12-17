@@ -288,7 +288,7 @@ class ImageButton extends Button
       $img.attr
         src: src
       .removeClass 'loading'
-      .data 'image-size', width + ',' + height
+      .data 'image-size', "#{width},#{height}"
       @setImgSize $img, width, height
 
       if $img.hasClass('uploading') # img being uploaded
@@ -534,11 +534,8 @@ class ImagePopover extends Popover
       return unless img
 
       if @active
-        @width = img.width
-        @height = img.height
-
-        @widthEl.val @width
-        @heightEl.val @height
+        @widthEl.val width
+        @heightEl.val height
 
       if /^data:image/.test(src)
         blob = @editor.util.dataURLtoBlob src
@@ -554,8 +551,9 @@ class ImagePopover extends Popover
   show: (args...) ->
     super args...
     $img = @target
-    @width = $img.width()
-    @height = $img.height()
+    width = $img.width()
+    height = $img.height()
+    $img.data 'image-size', "#{width},#{height}" unless $img.data 'image-size'
     @alt = $img.attr 'alt'
 
     if $img.hasClass 'uploading'
@@ -564,8 +562,8 @@ class ImagePopover extends Popover
     else
       @srcEl.val $img.attr('src')
         .prop 'disabled', false
-      @widthEl.val @width
-      @heightEl.val @height
+      @widthEl.val width
+      @heightEl.val height
       @altEl.val @alt
 
 
