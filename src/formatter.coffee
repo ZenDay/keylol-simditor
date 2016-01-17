@@ -18,7 +18,7 @@ class Formatter extends SimpleModule
     )
 
     @_allowedAttributes = $.extend
-      img: ['src', 'webp-src', 'alt', 'width', 'height', 'data-non-image']
+      img: ['src', 'article-image-src', 'alt', 'width', 'height', 'data-non-image']
       a: ['href']
     , @opts.allowedAttributes
 
