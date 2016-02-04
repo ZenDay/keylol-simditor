@@ -244,7 +244,7 @@ class ImageButton extends Button
     result = $.parseJSON responseText
     success: result.code is 200
     msg: result.message
-    file_path: "//keylol.b0.upaiyun.com/#{result.url}!article.image"
+    file_path: "//storage.keylol.com/#{result.url}!article.image"
 
   _status: ->
     @_disableStatus()
