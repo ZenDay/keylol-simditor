@@ -1343,7 +1343,8 @@ UndoManager = (function(superClass) {
     })(this));
     this.editor.on('selectionchanged', (function(_this) {
       return function(e) {
-        return _this.resetCaretPosition();
+        _this.resetCaretPosition();
+        return _this.update();
       };
     })(this));
     this.editor.on('focus', (function(_this) {
@@ -1425,7 +1426,7 @@ UndoManager = (function(superClass) {
     this.editor.hidePopover();
     this._index -= 1;
     state = this._stack[this._index];
-    this.editor.body.html(state.html);
+    this.editor.body.get(0).innerHTML = state.html;
     this.caretPosition(state.caret);
     this.editor.body.find('.selected').removeClass('selected');
     this.editor.sync();
@@ -1440,7 +1441,7 @@ UndoManager = (function(superClass) {
     this.editor.hidePopover();
     this._index += 1;
     state = this._stack[this._index];
-    this.editor.body.html(state.html);
+    this.editor.body.get(0).innerHTML = state.html;
     this.caretPosition(state.caret);
     this.editor.body.find('.selected').removeClass('selected');
     this.editor.sync();
@@ -1448,13 +1449,12 @@ UndoManager = (function(superClass) {
   };
 
   UndoManager.prototype.update = function() {
-    var currentState, html;
+    var currentState;
     currentState = this.currentState();
     if (!currentState) {
       return;
     }
-    html = this.editor.body.html();
-    currentState.html = html;
+    currentState.html = this.editor.body.html();
     return currentState.caret = this.caretPosition();
   };
 
@@ -2206,7 +2206,8 @@ Clipboard = (function(superClass) {
   Clipboard.pluginName = 'Clipboard';
 
   Clipboard.prototype.opts = {
-    pasteImage: false
+    pasteImage: false,
+    cleanPaste: false
   };
 
   Clipboard.prototype._init = function() {
@@ -2291,13 +2292,13 @@ Clipboard = (function(superClass) {
       return function() {
         var pasteContent;
         _this.editor.hidePopover();
-        _this.editor.body.html(state.html);
+        _this.editor.body.get(0).innerHTML = state.html;
         _this.editor.undoManager.caretPosition(state.caret);
         _this.editor.body.focus();
         _this.editor.selection.reset();
         _this.editor.selection.range();
         _this._pasteInBlockEl = _this.editor.selection.blockNodes().last();
-        _this._pastePlainText = _this._pasteInBlockEl.is('pre, table');
+        _this._pastePlainText = _this.opts.cleanPaste || _this._pasteInBlockEl.is('pre, table');
         if (_this._pastePlainText) {
           pasteContent = _this.editor.formatter.clearHtml(_this._pasteBin.html(), true);
         } else {
@@ -2564,7 +2565,7 @@ Simditor = (function(superClass) {
   Simditor.prototype.setValue = function(val) {
     this.hidePopover();
     this.textarea.val(val);
-    this.body.html(val);
+    this.body.get(0).innerHTML = val;
     this.formatter.format();
     this.formatter.decorate();
     this.util.reflow(this.body);

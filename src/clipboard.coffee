@@ -5,6 +5,7 @@ class Clipboard extends SimpleModule
 
   opts:
     pasteImage: false
+    cleanPaste: false
 
   _init: ->
     @editor = @_module
@@ -77,14 +78,14 @@ class Clipboard extends SimpleModule
 
     setTimeout =>
       @editor.hidePopover()
-      @editor.body.html state.html
+      @editor.body.get(0).innerHTML = state.html
       @editor.undoManager.caretPosition state.caret
       @editor.body.focus()
       @editor.selection.reset()
       @editor.selection.range()
 
       @_pasteInBlockEl = @editor.selection.blockNodes().last()
-      @_pastePlainText = @_pasteInBlockEl.is 'pre, table'
+      @_pastePlainText = @opts.cleanPaste || @_pasteInBlockEl.is('pre, table')
 
       if @_pastePlainText
         pasteContent = @editor.formatter.clearHtml @_pasteBin.html(), true
