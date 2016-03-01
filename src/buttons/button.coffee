@@ -41,8 +41,10 @@ class Button extends SimpleModule
 
     @el.on 'mousedown', (e) =>
       e.preventDefault()
-      noFocus = @needFocus and !@editor.inputManager.focused
-      return false if @el.hasClass('disabled') or noFocus
+      if @needFocus and !@editor.inputManager.focused
+        @editor.focus()
+        @_status()
+      return false if @el.hasClass('disabled')
 
       if @menu
         @wrapper.toggleClass('menu-on')
