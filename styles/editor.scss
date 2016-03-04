@@ -3,6 +3,15 @@
 $simditor-button-height: 40px;
 $simditor-button-width: 46px;
 
+// keylol-theme-editor variable
+$theme: #159;
+$highLighted: #89A;
+$background: #EEE;
+$brightBackground: #fafaf9;
+$inertialText: #BBB;
+$inertialShape: #CCC;
+$inertialArea: #DDD;
+
 .simditor {
   position: relative;
   border: 1px solid #c9d8db;
@@ -111,7 +120,7 @@ $simditor-button-width: 46px;
       cursor: pointer;
 
       &.selected {
-        box-shadow: 0 0 0 4px #c7cdd1;
+        box-shadow: 0 0 0 4px $inertialShape;
       }
     }
   }
@@ -132,7 +141,7 @@ $simditor-button-width: 46px;
   }
 
   .simditor-toolbar {
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $inertialArea;
     background: #ffffff;
     width: 100%;
     transition: box-shadow 200ms;
@@ -149,7 +158,7 @@ $simditor-button-width: 46px;
 
         & > span.separator {
           display: inline-block;
-          background: #cfcfcf;
+          background: $inertialShape;
           width: 1px;
           height: 18px;
           margin: ($simditor-button-height - 18px) / 2 15px;
@@ -182,7 +191,7 @@ $simditor-button-width: 46px;
           }
 
           &.active {
-            background: #eeeeee;
+            background: $brightBackground;
 
             span {
               opacity: 1;
@@ -205,14 +214,14 @@ $simditor-button-width: 46px;
 
             &.active-h1 span:before {
               content: '标题';
-              color: #11254a;
+              color: $theme;
               font-weight: bold;
             }
 
             &.active-comment span:before {
               content: '注释';
               font-style: italic;
-              color: #c7cdd1;
+              color: $inertialText;
             }
           }
 
@@ -318,7 +327,7 @@ $simditor-button-width: 46px;
             &.menu-item-heading {
               font-size: 16px;
               font-weight: bold;
-              color: #11254a;
+              color: $theme;
 
               &:before {
                 content: ">";
@@ -335,14 +344,14 @@ $simditor-button-width: 46px;
 
             &.menu-item-comment {
               font-size: 15px;
-              color: #c7cdd1;
+              color: $inertialText;
               font-style: italic;
             }
           }
 
           .separator {
             display: block;
-            border-top: 1px solid #c7cdd1;
+            border-top: 1px solid $inertialText;
             height: 0;
             line-height: 0;
             font-size: 0;
@@ -569,13 +578,13 @@ $simditor-button-width: 46px;
     margin-bottom: 0 !important;
   }
 
-  a{ color: #738a95; text-decoration: none; word-break: break-all;}
+  a{ color: $highLighted; text-decoration: none; word-break: break-all;}
   a:hover, a:active{ text-decoration: underline; }
 
   h1,h2,h3,h4,h5,h6 {
     font-size: 16px;
     font-weight: bold;
-    color: #11254a;
+    color: $theme;
     margin: 25px 0 10px;
   }
 
@@ -593,7 +602,7 @@ $simditor-button-width: 46px;
   }
 
   comment {
-    color: #c7cdd1;
+    color: $inertialText;
     font-style: italic;
     word-wrap: break-word;
     margin: 0 0 16px;
@@ -640,8 +649,8 @@ $simditor-button-width: 46px;
   }
 
   blockquote {
-    background: #EEF1F3;
-    border-left: 5px solid #11254a;
+    background: $brightBackground;
+    border-left: 5px solid $theme;
     padding: 10px 13px;
     margin: 0 0 16px;
 
@@ -694,7 +703,7 @@ $simditor-button-width: 46px;
     display: inline-block;
     padding: 0 4px;
     margin: 0 5px;
-    background: #eeeeee;
+    background: $brightBackground;
     border-radius: 3px;
     font-size: 13px;
     font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
@@ -726,7 +735,7 @@ $simditor-button-width: 46px;
     display: block;
     height: 0;
     border: 0;
-    border-top: 1px solid #c7cdd1;
+    border-top: 1px solid $inertialShape;
     margin: 16px 0;
     padding: 0;
   }
@@ -739,13 +748,13 @@ $simditor-button-width: 46px;
     margin: 16px 0;
 
     thead {
-      background-color: #EEF1F3;
+      background-color: $brightBackground;
     }
 
     td, th {
       min-width: 40px;
       height: 30px;
-      border: 1px solid #c7cdd1;
+      border: 1px solid $inertialArea;
       vertical-align: top;
       padding: 2px 4px;
       text-align: left;
@@ -757,7 +766,7 @@ $simditor-button-width: 46px;
     }
 
     th.active {
-      background: #F3F5F7;
+      background: #fcfcfa;
     }
   }
 
