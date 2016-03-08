@@ -118,10 +118,10 @@ module.exports = (grunt) ->
       keylol:
         files: [{
           src: 'styles/simditor.css',
-          dest: '../keylol-frontend/app/bower_components/simditor/styles/simditor.css'
+          dest: '../keylol-frontend/node_modules/simditor/styles/simditor.css'
         }, {
           src: 'lib/simditor.js',
-          dest: '../keylol-frontend/app/bower_components/simditor/lib/simditor.js'
+          dest: '../keylol-frontend/node_modules/simditor/lib/simditor.js'
         }]
 
       package:
