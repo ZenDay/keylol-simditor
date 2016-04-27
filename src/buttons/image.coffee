@@ -240,6 +240,7 @@ class ImageButton extends Button
       if @editor.body.find('img.uploading').length < 1
         @editor.uploader.trigger 'uploadready', [file, result]
 
+#todo: 检测文件格式加自定义格式。
   parseUpyunResponse: (responseText) ->
     result = $.parseJSON responseText
     success: result.code is 200
