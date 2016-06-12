@@ -304,6 +304,11 @@ $inertialArea: #DDD;
         left: 0;
       }
 
+      &[style]:before {
+        left: auto;
+        right: 0;
+      }
+
       ul {
         min-width: 160px;
         list-style: none;

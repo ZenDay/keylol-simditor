@@ -52,6 +52,10 @@ class Button extends SimpleModule
           .removeClass('menu-on')
 
         if @wrapper.is('.menu-on')
+          @menuWrapper.css
+            'left': ''
+            'right': ''
+          
           exceed = @menuWrapper.offset().left + @menuWrapper.outerWidth() + 5 -
             @editor.wrapper.offset().left - @editor.wrapper.outerWidth()
 

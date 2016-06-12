@@ -1,7 +1,7 @@
 /*!
 * Simditor (Keylol Special Edition)
 * http://simditor.tower.im/
-* 2016-04-21
+* 2016-06-12
 */
 @charset "UTF-8";
 @font-face {
@@ -338,6 +338,10 @@
   position: absolute;
   top: -3px;
   left: 0;
+}
+.simditor .simditor-toolbar .toolbar-menu[style]:before {
+  left: auto;
+  right: 0;
 }
 .simditor .simditor-toolbar .toolbar-menu ul {
   min-width: 160px;
