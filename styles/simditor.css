@@ -1,7 +1,7 @@
 /*!
 * Simditor (Keylol Special Edition)
 * http://simditor.tower.im/
-* 2016-06-12
+* 2016-06-14
 */
 @charset "UTF-8";
 @font-face {
@@ -97,17 +97,16 @@
 
 .simditor {
   position: relative;
-  border: 1px solid #c9d8db;
 }
 .simditor .simditor-wrapper {
   position: relative;
-  background: #ffffff;
+  background: #f5f6f7;
 }
 .simditor .simditor-wrapper > textarea {
   display: none !important;
   width: 100%;
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   border: none;
   padding: 20px 11px 40px;
@@ -189,7 +188,7 @@
   cursor: pointer;
 }
 .simditor .simditor-body img.selected {
-  box-shadow: 0 0 0 4px #CCC;
+  box-shadow: 0 0 0 4px #ccc;
 }
 .simditor .simditor-paste-bin {
   position: fixed;
@@ -206,8 +205,8 @@
   -webkit-user-select: text;
 }
 .simditor .simditor-toolbar {
-  border-bottom: 1px solid #DDD;
-  background: #ffffff;
+  border-bottom: 1px solid #ccc;
+  background: #f5f6f7;
   width: 100%;
   transition: box-shadow 200ms;
 }
@@ -223,7 +222,7 @@
 }
 .simditor .simditor-toolbar > ul > li > span.separator {
   display: inline-block;
-  background: #CCC;
+  background: #ccc;
   width: 1px;
   height: 18px;
   margin: 11px 15px;
@@ -252,7 +251,7 @@
   opacity: 1;
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.active {
-  background: #fafaf9;
+  background: #eee;
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.active span {
   opacity: 1;
@@ -275,7 +274,7 @@
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-paragraph.active-comment span:before {
   content: '注释';
   font-style: italic;
-  color: #BBB;
+  color: #bbb;
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title span:before {
   content: "H";
@@ -377,12 +376,12 @@
 }
 .simditor .simditor-toolbar .toolbar-menu ul > li .menu-item.menu-item-comment {
   font-size: 15px;
-  color: #BBB;
+  color: #bbb;
   font-style: italic;
 }
 .simditor .simditor-toolbar .toolbar-menu ul > li .separator {
   display: block;
-  border-top: 1px solid #BBB;
+  border-top: 1px solid #bbb;
   height: 0;
   line-height: 0;
   font-size: 0;
@@ -559,9 +558,9 @@
 }
 
 .simditor .simditor-body, .editor-style {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6em;
-  color: #333;
+  color: #444;
   outline: none;
   word-wrap: break-word;
   white-space: normal;
@@ -581,7 +580,7 @@
   text-decoration: underline;
 }
 .simditor .simditor-body h1, .simditor .simditor-body h2, .simditor .simditor-body h3, .simditor .simditor-body h4, .simditor .simditor-body h5, .simditor .simditor-body h6, .editor-style h1, .editor-style h2, .editor-style h3, .editor-style h4, .editor-style h5, .editor-style h6 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   color: #159;
   margin: 25px 0 10px;
@@ -590,7 +589,7 @@
   content: ">";
   font-family: "Keylol Rail Sung", serif;
   margin-right: 6px;
-  font-size: 16px;
+  font-size: 20px;
 }
 .simditor .simditor-body p, .simditor .simditor-body div, .editor-style p, .editor-style div {
   word-wrap: break-word;
@@ -598,11 +597,12 @@
   color: #333;
 }
 .simditor .simditor-body comment, .editor-style comment {
-  color: #BBB;
+  color: #bbb;
   font-style: italic;
   word-wrap: break-word;
   margin: 0 0 16px;
   display: block;
+  font-size: 12px;
 }
 .simditor .simditor-body b, .simditor .simditor-body strong, .editor-style b, .editor-style strong {
   font-weight: bold;
@@ -635,10 +635,10 @@
   list-style: decimal;
 }
 .simditor .simditor-body blockquote, .editor-style blockquote {
-  background: #fafaf9;
-  border-left: 5px solid #159;
-  padding: 10px 13px;
+  background-color: #fff;
+  padding: 20px 15px;
   margin: 0 0 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
 }
 .simditor .simditor-body blockquote > :first-child, .editor-style blockquote > :first-child {
   margin-top: 0 !important;
@@ -648,28 +648,15 @@
 }
 .simditor .simditor-body spoiler, .editor-style spoiler {
   display: block;
-  padding: 0 13px;
   margin: 0 0 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+  background-color: #fff;
 }
-.simditor .simditor-body spoiler:before, .editor-style spoiler:before {
-  content: " ";
-  display: block;
-  height: 10px;
-  border: 2px solid #e30613;
-  margin: 0 -13px;
-  border-bottom: none;
-  border-top-width: 6px;
-  box-sizing: border-box;
-}
-.simditor .simditor-body spoiler:after, .editor-style spoiler:after {
-  content: " ";
-  display: block;
-  height: 10px;
-  border: 2px solid #e30613;
-  margin: 0 -13px;
-  border-top: none;
-  border-bottom-width: 6px;
-  box-sizing: border-box;
+.simditor .simditor-body spoiler:not(.actionable), .editor-style spoiler:not(.actionable) {
+  border-left: 5px solid #59d;
+  border-right: 5px solid #59d;
+  padding: 20px 10px;
+  border-radius: 2px;
 }
 .simditor .simditor-body spoiler > :first-child, .editor-style spoiler > :first-child {
   margin-top: 0 !important;
@@ -681,7 +668,7 @@
   display: inline-block;
   padding: 0 4px;
   margin: 0 5px;
-  background: #fafaf9;
+  background: #fff;
   border-radius: 3px;
   font-size: 13px;
   font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
@@ -710,7 +697,7 @@
   display: block;
   height: 0;
   border: 0;
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #ccc;
   margin: 16px 0;
   padding: 0;
 }
@@ -721,23 +708,17 @@
   border-spacing: 0;
   margin: 16px 0;
 }
-.simditor .simditor-body table thead, .editor-style table thead {
-  background-color: #fafaf9;
-}
 .simditor .simditor-body table td, .simditor .simditor-body table th, .editor-style table td, .editor-style table th {
   min-width: 40px;
   height: 30px;
-  border: 1px solid #DDD;
+  border: 1px solid #ccc;
   vertical-align: top;
   padding: 2px 4px;
   text-align: left;
   box-sizing: border-box;
 }
-.simditor .simditor-body table td.active, .editor-style table td.active {
-  background-color: rgba(243, 217, 42, 0.1);
-}
-.simditor .simditor-body table th.active, .editor-style table th.active {
-  background: #fcfcfa;
+.simditor .simditor-body table .active, .editor-style table .active {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 .simditor .simditor-body img, .editor-style img {
   vertical-align: middle;
