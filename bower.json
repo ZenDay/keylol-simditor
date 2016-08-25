@@ -34,7 +34,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "simple-hotkeys": "~1.0.3",
-    "simple-uploader": "rexDainiel/simple-uploader#master",
+    "simple-uploader": "ZenDay/simple-uploader#master",
     "simple-module": "~2.0.6"
   }
 }
