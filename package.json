@@ -20,7 +20,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "simple-hotkeys": "~1.0.3",
-    "simple-uploader": "rexDainiel/simple-uploader",
+    "simple-uploader": "ZenDay/simple-uploader",
     "simple-module": "~2.0.6"
   },
   "devDependencies": {
